@@ -1,0 +1,25 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0.403 AS build
+WORKDIR /src
+
+COPY E8EksApi/*.csproj ./E8EksApi/
+
+RUN dotnet restore ./E8EksApi/E8EksApi.csproj
+
+COPY E8EksApi/. ./E8EksApi/
+
+WORKDIR /src/E8EksApi
+
+RUN dotnet publish -c Release -o /app
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.10 AS runtime
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y curl default-mysql-client
+
+
+COPY --from=build /app .
+COPY E8EksApi/appsettings.json ./appsettings.json
+
+EXPOSE 8080
+
+ENTRYPOINT ["dotnet", "E8EksApi.dll"]

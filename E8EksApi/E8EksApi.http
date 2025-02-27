@@ -1,0 +1,6 @@
+@E8EksApi_HostAddress = http://localhost:8080
+
+GET {{E8EksApi_HostAddress}}/api/
+Accept: application/json
+
+###

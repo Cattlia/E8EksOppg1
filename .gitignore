@@ -1,0 +1,26 @@
+# Build files
+bin/
+obj/
+
+# User-specific files
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Environment & configuration
+#.env
+secrets.json
+
+# Dependency caches
+node_modules/
+packages/
+
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+
+E8Eksamen23-25 Eksamen Emne-8 Cloud-teknikker, web-arkitektur og container teknologi-nett.pdf
+Referanser.md
